@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+{%load static%}
+<html>
+
+<head>
+    <title>Homework AI</title>
+    <link rel="icon" type="image/png" href='main/static/favicon.png'>   
+    <style>
+        *{
+           padding: 0;
+           margin: 0;
+        }
+        body{
+           background-image: linear-gradient(90deg, rgba(125, 125, 125, 0) 0%, rgba(125, 125, 125, 0) 7%,rgba(194, 194, 194, 0) 7%, rgba(194, 194, 194, 0) 29%,rgba(124, 124, 124, 0) 29%, rgba(124, 124, 124, 0) 57%,rgba(237, 237, 237, 0) 57%, rgba(237, 237, 237, 0) 59%,rgba(110, 110, 110, 0) 59%, rgba(110, 110, 110, 0) 100%),linear-gradient(90deg, rgba(6, 6, 6, 0.01) 0%, rgba(6, 6, 6, 0.01) 20%,rgba(210, 210, 210, 0.01) 20%, rgba(210, 210, 210, 0.01) 64%,rgba(10, 10, 10, 0.01) 64%, rgba(10, 10, 10, 0.01) 82%,rgba(72, 72, 72, 0.01) 82%, rgba(72, 72, 72, 0.01) 88%,rgba(127, 127, 127, 0.01) 88%, rgba(127, 127, 127, 0.01) 100%),linear-gradient(90deg, rgba(4, 4, 4, 0.06) 0%, rgba(4, 4, 4, 0.06) 56%,rgba(6, 6, 6, 0.06) 56%, rgba(6, 6, 6, 0.06) 65%,rgba(110, 110, 110, 0.06) 65%, rgba(110, 110, 110, 0.06) 83%,rgba(136, 136, 136, 0.06) 83%, rgba(136, 136, 136, 0.06) 100%),linear-gradient(349deg, rgba(137, 137, 137, 0.02) 0%, rgba(137, 137, 137, 0.02) 43%,rgba(112, 112, 112, 0.02) 43%, rgba(112, 112, 112, 0.02) 100%),linear-gradient(47deg, rgba(184, 184, 184, 0.06) 0%, rgba(184, 184, 184, 0.06) 36%,rgba(32, 32, 32, 0.06) 36%, rgba(32, 32, 32, 0.06) 100%),linear-gradient(83deg, rgba(222, 222, 222, 0.07) 0%, rgba(222, 222, 222, 0.07) 98%,rgba(143, 143, 143, 0.07) 98%, rgba(143, 143, 143, 0.07) 100%),repeating-linear-gradient(0deg, rgba(244, 244, 244, 0.08) 0px, rgba(244, 244, 244, 0.08) 72px,rgba(155, 155, 155, 0.08) 72px, rgba(155, 155, 155, 0.08) 179px,rgba(102, 102, 102, 0.08) 179px, rgba(102, 102, 102, 0.08) 477px,rgba(133, 133, 133, 0.08) 477px, rgba(133, 133, 133, 0.08) 580px,rgba(83, 83, 83, 0.08) 580px, rgba(83, 83, 83, 0.08) 614px),repeating-linear-gradient(135deg, rgba(115, 115, 115, 0.03) 0px, rgba(115, 115, 115, 0.03) 266px,rgba(99, 99, 99, 0.03) 266px, rgba(99, 99, 99, 0.03) 273px,rgba(115, 115, 115, 0.03) 273px, rgba(115, 115, 115, 0.03) 351px,rgba(229, 229, 229, 0.03) 351px, rgba(229, 229, 229, 0.03) 439px),repeating-linear-gradient(45deg, rgba(72, 72, 72, 0.01) 0px, rgba(72, 72, 72, 0.01) 232px,rgba(65, 65, 65, 0.01) 232px, rgba(65, 65, 65, 0.01) 345px,rgba(140, 140, 140, 0.01) 345px, rgba(140, 140, 140, 0.01) 348px,rgba(26, 26, 26, 0.01) 348px, rgba(26, 26, 26, 0.01) 547px),repeating-linear-gradient(45deg, rgba(68, 68, 68, 0.05) 0px, rgba(68, 68, 68, 0.05) 115px,rgba(182, 182, 182, 0.05) 115px, rgba(182, 182, 182, 0.05) 246px,rgba(14, 14, 14, 0.05) 246px, rgba(14, 14, 14, 0.05) 272px,rgba(80, 80, 80, 0.05) 272px, rgba(80, 80, 80, 0.05) 298px,rgba(37, 37, 37, 0.05) 298px, rgba(37, 37, 37, 0.05) 434px),repeating-linear-gradient(135deg, rgba(46, 46, 46, 0.03) 0px, rgba(46, 46, 46, 0.03) 107px,rgba(169, 169, 169, 0.03) 107px, rgba(169, 169, 169, 0.03) 182px,rgba(71, 71, 71, 0.03) 182px, rgba(71, 71, 71, 0.03) 321px,rgba(182, 182, 182, 0.03) 321px, rgba(182, 182, 182, 0.03) 359px),linear-gradient(90deg, #084da4 0%,#01aeb6 100%);
+           margin: 20px;
+           padding: 20px;
+           font-family : 'Helvetica';
+        }
+        form{
+           text-align: center;
+        }
+        form button{
+          background-color: #044597;
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        }
+        .path {
+            background: #5DD5FE;
+            color: black;
+            padding: 2px 16px;
+            border-radius: 15px;
+            margin: 2px 25px 10px 0px;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            width: fit-content;
+            width: 150px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .path p {
+            border: 1px solid;
+            padding: 25px;
+        }
+
+        .path p:last-child {
+            border: none;
+            padding: 0px;
+        }
+        .section{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        h1 , h2{
+          color: #fff;
+          text-align: center;
+          padding: 5px;
+        }
+
+        .row{
+          display: flex;
+          justify-content: center;
+        }
+        .row input{
+          height:100px;
+          width:100px;
+          border:1px solid black;
+          text-align : center;
+          font-size: 78px;
+          cursor: pointer;
+        }
+        .row label{
+            font-size: 30px;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        .col-lg-6 {
+            width: 50%;
+            margin: 40px 80px;
+            float: right;
+        }
+        textarea {
+            margin: -225px 0;
+            padding-left: 15px;
+            border: solid 5px #0090e3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>8 Pazzle Game </h1>
+    <h2>Search Algorithm A *</h2>
+    <h2> tasnim_149038 ----- marim_156262 ----- shahd_154257 </h2>
+    <div class="container">
+        <div class="tab">
+
+            <div class="section ">
+                <form method="POST" action="/">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label for="" class="row"> Start</label>
+                            <div class="row">
+
+                                <input type="text" value="2" name="start">
+                                <input type="text" value="3" name="start">
+                                <input type="text" value="5" name="start">
+                            </div>
+                            <div class="row">
+
+                                <input type="text" value="1" name="start">
+                                <input type="text" value="4" name="start">
+                                <input type="text" value="-" name="start">
+                            </div>
+                            <div class="row">
+
+                                <input type="text" value="7" name="start">
+                                <input type="text" value="8" name="start">
+                                <input type="text" value="6" name="start">
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-6">
+                            <label for="" class="row"> Goal</label>
+                            <div class="row">
+
+                                <input type="text" value="1" class="goal" name="goal">
+                                <input type="text" value="2" class="goal" name="goal">
+                                <input type="text" value="3" class="goal" name="goal">
+                            </div>
+                            <div class="row">
+
+                                <input type="text" value="4" class="goal" name="goal">
+                                <input type="text" value="5" class="goal" name="goal">
+                                <input type="text" value=6 class="goal" name="goal">
+                            </div>
+                            <div class="row">
+
+                                <input type="text" value="7" class="goal" name="goal">
+                                <input type="text" value="8" class="goal" name="goal">
+                                <input type="text" value="-" class="goal" name="goal">
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <button class="search-button" type="submit">Search</button>
+                </form>
+            </div>
+
+            <div class="col-lg-6">
+                {% if data %}
+                <div class="path">
+                    {{data|linebreaks}}
+                </div>
+
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

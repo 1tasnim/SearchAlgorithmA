@@ -1,0 +1,5 @@
+//init project
+py manage.py startapp main
+
+//run project
+py manage.py runserver 
